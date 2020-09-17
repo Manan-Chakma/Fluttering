@@ -70,6 +70,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 //gotoSecondUiUsingNamedRoute(); // named routing
                 gotoSecondUiUsingGenerator(); // using generator
               },
+            ),
+            RaisedButton(
+              child: Text('Go to Login ui'),
+              onPressed: () {
+                gotoLoginUi();
+              },
             )
           ],
         ),
@@ -98,6 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void gotoSecondUiUsingGenerator() {
     Navigator.of(context).pushNamed('/standings', arguments: 'Hello there from first page');
+  }
+
+  void gotoLoginUi() {
+    Navigator.of(context).pushNamed('/login', arguments: 'Hello there from first page');
   }
 }
 // 1. Basic Route
