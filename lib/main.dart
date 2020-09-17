@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_flutter_application/routing/route_generator.dart';
+import 'package:test_flutter_application/widgets/standingsui/standings.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +15,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
+      //home: MyHomePage(title: 'Flutter Demo Home Page'),
+/*      routes: {
+        '/standings': (_) => StandingsUi(data: 'Hello from Home Page')
+      },*/
     );
   }
 }
@@ -51,8 +58,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headline4,
             ),
+            RaisedButton(
+              child: Text('Go to Second UI'),
+              onPressed: () {
+                //gotoSecondUi(); // this is the basic routing
+                //gotoSecondUiUsingNamedRoute(); // named routing
+                gotoSecondUiUsingGenerator(); // using generator
+              },
+            )
           ],
         ),
       ),
@@ -63,4 +81,25 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  // basic one
+  gotoSecondUi() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            StandingsUi(
+              data: 'Hello from first page',
+            )));
+  }
+
+  // named routing
+  void gotoSecondUiUsingNamedRoute() {
+    Navigator.of(context).pushNamed('/standings');
+  }
+
+  void gotoSecondUiUsingGenerator() {
+    Navigator.of(context).pushNamed('/standings', arguments: 'Hello there from first page');
+  }
 }
+// 1. Basic Route
+// 2. Named Route
+// 3. onGenerateRoutes
