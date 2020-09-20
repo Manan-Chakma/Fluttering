@@ -58,13 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline4,
+              style: Theme.of(context).textTheme.headline4,
             ),
             RaisedButton(
-              child: Text('Go to Second UI'),
+              child: Text('Go to a UI'),
               onPressed: () {
                 //gotoSecondUi(); // this is the basic routing
                 //gotoSecondUiUsingNamedRoute(); // named routing
@@ -72,9 +69,27 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             RaisedButton(
-              child: Text('Go to Login ui'),
+              child: Text('Go to Login UI'),
               onPressed: () {
                 gotoLoginUi();
+              },
+            ),
+            RaisedButton(
+              child: Text('Hero Widget in listView'),
+              onPressed: () {
+                gotoThirdWork();
+              },
+            ),
+            RaisedButton(
+              child: Text('Hero Widget Normal'),
+              onPressed: () {
+                gotoFourthWork();
+              },
+            ),
+            RaisedButton(
+              child: Text('Animated List with List Tile'),
+              onPressed: () {
+                gotoFifthWork();
               },
             )
           ],
@@ -91,8 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // basic one
   gotoSecondUi() {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) =>
-            StandingsUi(
+        builder: (context) => StandingsUi(
               data: 'Hello from first page',
             )));
   }
@@ -102,12 +116,31 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pushNamed('/standings');
   }
 
+  // using generator
   void gotoSecondUiUsingGenerator() {
-    Navigator.of(context).pushNamed('/standings', arguments: 'Hello there from first page');
+    Navigator.of(context)
+        .pushNamed('/standings', arguments: 'Hello there from first page');
   }
 
   void gotoLoginUi() {
-    Navigator.of(context).pushNamed('/login', arguments: 'Hello there from first page');
+    Navigator.of(context)
+        .pushNamed('/loginui', arguments: 'Hello there from first page');
+  }
+
+  void gotoThirdWork() {
+    // argument can be used to pass data
+    Navigator.of(context)
+        .pushNamed('/hero_list', arguments: 'Hello there from first page');
+  }
+
+  void gotoFourthWork() {
+    Navigator.of(context)
+        .pushNamed('/hero_single', arguments: 'Hello there from first page');
+  }
+
+  void gotoFifthWork() {
+    Navigator.of(context)
+        .pushNamed('/animated_list', arguments: 'Hello there from first page');
   }
 }
 // 1. Basic Route
