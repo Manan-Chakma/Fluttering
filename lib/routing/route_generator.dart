@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:test_flutter_application/drawer_samples/local_widgets/drawer_home.dart';
+import 'package:test_flutter_application/drawer_samples/local_widgets/settings.dart';
+import 'package:test_flutter_application/drawer_samples/my_drawer.dart';
 import 'package:test_flutter_application/main.dart';
 import 'package:test_flutter_application/widgets/animated_list_sample/anim_list.dart';
 import 'package:test_flutter_application/widgets/hero_second_sample/use_hero.dart';
@@ -40,6 +43,15 @@ class RouteGenerator {
           return MaterialPageRoute(builder: (_) => MyAnimatedList());
         }
         return _errorRoute();
+      case '/nav_drawer':
+        if (args is String) {
+          return MaterialPageRoute(builder: (_) => MyDrawerApp());
+        }
+        return _errorRoute();
+/*      case '/drawer_home':
+        return MaterialPageRoute(builder: (_) => MyDrawerHomePage());
+      case '/drawer_settings':
+        return MaterialPageRoute(builder: (_) => MyDrawerSettingsWidget());*/
       default:
         return _errorRoute();
     }

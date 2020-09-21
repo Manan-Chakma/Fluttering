@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -91,6 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 gotoFifthWork();
               },
+            ),
+            RaisedButton(
+              child: Text('My nav Drawer'),
+              onPressed: () {
+                goToSixthWork();
+              },
             )
           ],
         ),
@@ -141,6 +148,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void gotoFifthWork() {
     Navigator.of(context)
         .pushNamed('/animated_list', arguments: 'Hello there from first page');
+  }
+
+  void goToSixthWork() {
+    Navigator.of(context)
+        .pushNamed('/nav_drawer', arguments: 'Hello there from first page');
   }
 }
 // 1. Basic Route
